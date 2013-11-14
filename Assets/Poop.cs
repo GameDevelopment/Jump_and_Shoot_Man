@@ -35,7 +35,7 @@ public class Poop : MonoBehaviour {
 
 		if (jump)
 		{
-			rigidbody2D.AddForce (new Vector2(0f, jumpForce));
+			rigidbody2D.AddForce (transform.up * jumpForce);
 			jump = false;
 		}
 	}
