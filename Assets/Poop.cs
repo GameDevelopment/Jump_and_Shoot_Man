@@ -4,11 +4,13 @@ using System.Collections;
 
 public class Poop : MonoBehaviour {
 
-	public float speed = 2;
-	public float jumpForce = 2;
+	public float speed = 350;
+	public float jumpForce = 500;
 	public float maxSpeed = 8;
+	public Transform groundCheck;
 
 	private bool jump = false;
+	private bool grounded;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +19,8 @@ public class Poop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Jump")) 
+		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")); 
+		if (Input.GetButtonDown("Jump") && grounded) 
 		{
 			jump = true;
 		}
