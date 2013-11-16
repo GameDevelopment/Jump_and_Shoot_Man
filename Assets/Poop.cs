@@ -20,6 +20,7 @@ public class Poop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")); 
+		Debug.Log(grounded);
 		if (Input.GetButtonDown("Jump") && grounded) 
 		{
 			jump = true;
@@ -34,7 +35,7 @@ public class Poop : MonoBehaviour {
 			rigidbody2D.AddForce (Vector2.right * h * speed);
 
 		if (Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
-		    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+		    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.vel	ocity.y);
 
 		if (jump)
 		{
@@ -42,4 +43,5 @@ public class Poop : MonoBehaviour {
 			jump = false;
 		}
 	}
+
 }
