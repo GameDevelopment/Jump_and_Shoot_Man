@@ -35,7 +35,7 @@ public class CharacterController : MonoBehaviour {
 			rigidbody2D.AddForce (Vector2.right * h * speed);
 
 		if (Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
-		    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.vel	ocity.y);
+		    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 
 		if (jump)
 		{
