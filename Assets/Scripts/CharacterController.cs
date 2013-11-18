@@ -2,7 +2,7 @@
 using System.Collections;
 [RequireComponent (typeof(Rigidbody2D))]
 
-public class Poop : MonoBehaviour {
+public class CharacterController : MonoBehaviour {
 
 	public float speed = 2;
 	public float jumpForce = 2;
@@ -12,7 +12,7 @@ public class Poop : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+       
 	}
 	
 	// Update is called once per frame
