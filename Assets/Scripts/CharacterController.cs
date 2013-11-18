@@ -4,11 +4,13 @@ using System.Collections;
 
 public class CharacterController : MonoBehaviour {
 
-	public float speed = 2;
-	public float jumpForce = 2;
+	public float speed = 350;
+	public float jumpForce = 500;
 	public float maxSpeed = 8;
+	public Transform groundCheck;
 
 	private bool jump = false;
+	private bool grounded;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +19,9 @@ public class CharacterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Jump")) 
+		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")); 
+		Debug.Log(grounded);
+		if (Input.GetButtonDown("Jump") && grounded) 
 		{
 			jump = true;
 		}
@@ -31,7 +35,7 @@ public class CharacterController : MonoBehaviour {
 			rigidbody2D.AddForce (Vector2.right * h * speed);
 
 		if (Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
-		    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+		    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.vel	ocity.y);
 
 		if (jump)
 		{
@@ -39,4 +43,5 @@ public class CharacterController : MonoBehaviour {
 			jump = false;
 		}
 	}
+
 }
